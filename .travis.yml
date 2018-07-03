@@ -1,0 +1,25 @@
+os: osx
+osx_image: xcode9.3
+
+language: node_js
+node_js: 8
+
+cache:
+  yarn: true
+  directories:
+    - node_modules
+
+script:
+  - yarn test
+  - yarn package
+
+deploy:
+  provider: releases
+  api_key: $GH_TOKEN
+  file_glob: true
+  file: dist/*
+  skip_cleanup: true
+
+branches:
+  only:
+    - master
