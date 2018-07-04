@@ -1,11 +1,17 @@
-# Youtube Video Hider
+# YouTube Video Hider
 [![Build Status](https://travis-ci.org/fiahfy/youtube-video-hider.svg?branch=master)](https://travis-ci.org/fiahfy/youtube-video-hider)
 
-> Chrome Extension for hiding video and thumbnails on Youtube.
+> Chrome Extension for hiding video and thumbnails on YouTube.
 
 
 ## Features
-* Hide Video and Thumbnails on Youtube.
+* Hide Video, Channel Avatar and Video Thumbnails.
+
+
+## Screenshots
+![screenshot](./build/screenshots/screenshot1.png?raw=true)
+
+![screenshot](./build/screenshots/screenshot2.png?raw=true)
 
 
 ## Installation

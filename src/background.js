@@ -6,17 +6,19 @@ import './assets/icon48.png'
 
 const code = `
 .yvh-enabled ytd-thumbnail,
-.yvh-enabled yt-img-shadow {
+.yvh-enabled yt-img-shadow,
+.yvh-enabled ytd-playlist-panel-video-renderer #thumbnail-container,
+.yvh-enabled ytd-watch video.video-stream.html5-main-video,
+.yvh-enabled ytd-watch .ytp-offline-slate,
+.yvh-enabled ytd-watch .ytp-spinner,
+.yvh-enabled ytd-channel-video-player-renderer #player-container,
+.yvh-enabled app-header .banner-visible-area {
   display: none!important;
 }
-.yvh-enabled #player {
-  height: 200px!important;
-  min-height: 200px!important;
+.yvh-enabled ytd-topbar-menu-button-renderer yt-img-shadow {
+  display: inherit!important;
 }
-.yvh-enabled video.video-stream.html5-main-video {
-  display: none!important;
-}
-.yvh-enabled .ytp-chrome-bottom {
+.yvh-enabled ytd-watch .ytp-chrome-bottom {
   opacity: 1!important;
 }
 `

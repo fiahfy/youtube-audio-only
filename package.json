@@ -1,6 +1,6 @@
 {
   "name": "youtube-video-hider",
-  "description": "Hide Video and Thumbnails on Youtube",
+  "description": "Hide Video and Thumbnails on YouTube",
   "version": "0.0.1",
   "author": {
     "name": "fiahfy",
@@ -53,7 +53,7 @@
     "build": "webpack",
     "dev": "webpack -w --config webpack.config.dev.babel.js",
     "lint": "eslint src --ext .js,.vue",
-    "package": "NODE_ENV=production npm run build && mkdir -p dist && zip -r dist/youtube-live-chat-flow.zip app",
+    "package": "NODE_ENV=production npm run build && mkdir -p dist && zip -r dist/youtube-video-hider.zip app",
     "test": "npm run lint"
   }
 }
