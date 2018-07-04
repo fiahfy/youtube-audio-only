@@ -1,6 +1,5 @@
 import webpack from 'webpack'
 import CopyWebpackPlugin from 'copy-webpack-plugin'
-import { VueLoaderPlugin } from 'vue-loader'
 
 const mode = process.env.NODE_ENV || 'development'
 
@@ -22,17 +21,6 @@ export default {
         test: /\.js$/,
         loader: 'babel-loader',
         exclude: /node_modules/
-      },
-      {
-        test: /\.vue$/,
-        loader: 'vue-loader'
-      },
-      {
-        test: /\.css$/,
-        use: [
-          'vue-style-loader',
-          'css-loader'
-        ]
       },
       {
         test: /\.(jpg|gif|png|svg)$/,
@@ -57,15 +45,13 @@ export default {
           version: process.env.npm_package_version
         }))
       }
-    }]),
-    new VueLoaderPlugin()
+    }])
   ],
   resolve: {
-    extensions: ['.js', '.json', '.vue'],
+    extensions: ['.js', '.json'],
     alias: {
       '~~': `${__dirname}/`,
-      '~': `${__dirname}/src/`,
-      vue$: 'vue/dist/vue.esm.js'
+      '~': `${__dirname}/src/`
     }
   }
 }
