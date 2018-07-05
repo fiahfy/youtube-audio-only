@@ -1,11 +1,11 @@
-# YouTube Video Hider
-[![Build Status](https://travis-ci.org/fiahfy/youtube-video-hider.svg?branch=master)](https://travis-ci.org/fiahfy/youtube-video-hider)
+# YouTube Audio Only
+[![Build Status](https://travis-ci.org/fiahfy/youtube-audio-only.svg?branch=master)](https://travis-ci.org/fiahfy/youtube-audio-only)
 
-> Chrome Extension for hiding video and thumbnails on YouTube.
+> Chrome Extension for Audio Only on YouTube.
 
 
 ## Features
-* Hide Video, Channel Avatar and Video Thumbnails.
+* Hide playing video, thumbnails and avatars.
 
 
 ## Screenshots
@@ -15,7 +15,7 @@
 
 
 ## Installation
-1. Download `.zip` file from [releases page](https://github.com/fiahfy/youtube-video-hider/releases).
+1. Download `.zip` file from [releases page](https://github.com/fiahfy/youtube-audio-only/releases).
 2. Unzip this file.
 3. Open URL `chrome://extensions/` by Google Chrome.
 4. Enable developer mode.
