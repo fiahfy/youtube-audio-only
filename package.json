@@ -1,6 +1,6 @@
 {
-  "name": "youtube-video-hider",
-  "description": "Hide Video and Thumbnails on YouTube",
+  "name": "youtube-audio-only",
+  "description": "Hide Contents for Audio Only on YouTube",
   "version": "0.0.1",
   "author": {
     "name": "fiahfy",
@@ -37,13 +37,13 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/fiahfy/youtube-video-hider"
+    "url": "https://github.com/fiahfy/youtube-audio-only"
   },
   "scripts": {
     "build": "webpack",
     "dev": "webpack -w --config webpack.config.dev.babel.js",
     "lint": "eslint src --ext .js",
-    "package": "NODE_ENV=production npm run build && mkdir -p dist && zip -r dist/youtube-video-hider.zip app",
+    "package": "NODE_ENV=production npm run build && mkdir -p dist && zip -r dist/youtube-audio-only.zip app",
     "test": "npm run lint"
   }
 }

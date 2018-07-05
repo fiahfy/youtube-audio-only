@@ -1,6 +1,6 @@
 {
-  "name": "YouTube Video Hider",
-  "description": "Hide Video and Thumbnails on YouTube",
+  "name": "YouTube Audio Only",
+  "description": " Hide Contents for Audio Only on YouTube",
   "manifest_version": 2,
   "icons": {
     "48": "assets/icon48.png"
