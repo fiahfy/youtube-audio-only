@@ -1,4 +1,3 @@
-import Storage from './utils/storage'
 import Logger from './utils/logger'
 import iconOff from './assets/icon-off48.png'
 import iconOn from './assets/icon-on48.png'
@@ -23,53 +22,43 @@ const code = `
 }
 `
 
-const toggleEnabled = async () => {
-  const settings = (await Storage.get()).settings
-  settings.enabled = !settings.enabled
-  await Storage.set({ settings })
+const enabled = {}
+
+const setIcon = (tabId) => {
+  const path = enabled[tabId] ? iconOn : iconOff
+  chrome.pageAction.setIcon({ tabId, path })
 }
 
-const updateIcon = async () => {
-  const settings = (await Storage.get()).settings
-  const path = settings.enabled ? iconOn : iconOff
-  chrome.browserAction.setIcon({ path })
+const sendMessage = (tabId) => {
+  chrome.tabs.sendMessage(tabId, { id: 'stateChanged', data: { enabled: enabled[tabId] } })
 }
 
-const sendMessageAll = (data) => {
-  chrome.tabs.query({}, (tabs) => {
-    tabs.forEach((tab) => {
-      chrome.tabs.sendMessage(tab.id, data)
-    })
-  })
-}
+chrome.pageAction.onClicked.addListener(async (tab) => {
+  Logger.log('chrome.pageAction.onClicked', tab)
 
-chrome.browserAction.onClicked.addListener(async (tab) => {
-  Logger.log('chrome.browserAction.onClicked', tab)
-
-  await toggleEnabled()
-  await updateIcon()
-  sendMessageAll({ id: 'stateChanged' })
+  enabled[tab.id] = !enabled[tab.id]
+  setIcon(tab.id)
+  sendMessage(tab.id)
 })
 
 chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
   Logger.log('chrome.runtime.onMessage', message, sender, sendResponse)
 
   const { id } = message
+  const { tab, frameId } = sender
   switch (id) {
     case 'contentLoaded':
-      chrome.tabs.insertCSS(sender.tab.id, { frameId: sender.frameId, code })
+      chrome.pageAction.show(tab.id)
+      chrome.tabs.insertCSS(tab.id, { frameId, code })
+      setIcon(tab.id)
+      sendMessage(tab.id)
+      break
+    case 'contentUnloaded':
+      chrome.pageAction.hide(tab.id)
       break
   }
 })
 
 ;(async () => {
   Logger.log('background script loaded')
-
-  const state = {
-    settings: { enabled: true },
-    ...(await Storage.get())
-  }
-  await Storage.set(state)
-
-  await updateIcon()
 })()
