@@ -1,9 +1,7 @@
-import Storage from './utils/storage'
 import Logger from './utils/logger'
 
-const update = async () => {
-  const settings = (await Storage.get()).settings
-  if (settings.enabled) {
+const update = async (enabled) => {
+  if (enabled) {
     document.body.classList.add('yvh-enabled')
   } else {
     document.body.classList.remove('yvh-enabled')
@@ -13,18 +11,16 @@ const update = async () => {
 chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
   Logger.log('onMessage', message, sender, sendResponse)
 
-  const { id } = message
+  const { id, data: { enabled } } = message
   switch (id) {
     case 'stateChanged':
-      await update()
+      await update(enabled)
       break
   }
 })
 
 ;(async () => {
   Logger.log('content script loaded')
-
-  await update()
 
   chrome.runtime.sendMessage({ id: 'contentLoaded' })
 })()

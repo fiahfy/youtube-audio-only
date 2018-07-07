@@ -1,7 +1,7 @@
 {
   "name": "youtube-audio-only",
   "description": "Hide Contents for Audio Only on YouTube",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": {
     "name": "fiahfy",
     "email": "d.fiahfy@gmail.com",
@@ -15,7 +15,6 @@
     "babel-preset-env": "^1.5.1",
     "babel-preset-stage-0": "^6.24.1",
     "copy-webpack-plugin": "^4.5.1",
-    "css-loader": "^0.28.11",
     "eslint": "^4.19.1",
     "eslint-config-standard": "^11.0.0",
     "eslint-plugin-import": "^2.11.0",
@@ -23,7 +22,6 @@
     "eslint-plugin-promise": "^3.7.0",
     "eslint-plugin-standard": "^3.0.1",
     "file-loader": "^1.1.11",
-    "html-webpack-plugin": "^3.2.0",
     "webpack": "^4.0.1",
     "webpack-chrome-extension-reloader": "^0.8.3",
     "webpack-cli": "^3.0.2"
