@@ -11,10 +11,10 @@ const update = (enabled) => {
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   Logger.log('onMessage', message, sender, sendResponse)
 
-  const { id, data: { enabled } } = message
+  const { id, data } = message
   switch (id) {
     case 'stateChanged':
-      update(enabled)
+      update(data.enabled)
       break
   }
 })
