@@ -1,7 +1,9 @@
 import Logger from './utils/logger'
 import iconOff from './assets/icon-off48.png'
 import iconOn from './assets/icon-on48.png'
+import './assets/icon16.png'
 import './assets/icon48.png'
+import './assets/icon128.png'
 
 const code = `
 .yvh-enabled ytd-thumbnail,
