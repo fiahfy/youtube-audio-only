@@ -5,21 +5,23 @@ import './assets/icon16.png'
 import './assets/icon48.png'
 import './assets/icon128.png'
 
+const className = 'yao-enabled'
+
 const code = `
-.yvh-enabled ytd-thumbnail,
-.yvh-enabled yt-img-shadow,
-.yvh-enabled ytd-playlist-panel-video-renderer #thumbnail-container,
-.yvh-enabled ytd-watch video.video-stream.html5-main-video,
-.yvh-enabled ytd-watch .ytp-offline-slate,
-.yvh-enabled ytd-watch .ytp-spinner,
-.yvh-enabled ytd-channel-video-player-renderer #player-container,
-.yvh-enabled app-header .banner-visible-area {
+.${className} ytd-thumbnail,
+.${className} yt-img-shadow,
+.${className} ytd-playlist-panel-video-renderer #thumbnail-container,
+.${className} ytd-watch video.video-stream.html5-main-video,
+.${className} ytd-watch .ytp-offline-slate,
+.${className} ytd-watch .ytp-spinner,
+.${className} ytd-channel-video-player-renderer #player-container,
+.${className} app-header .banner-visible-area {
   display: none!important;
 }
-.yvh-enabled ytd-topbar-menu-button-renderer yt-img-shadow {
+.${className} ytd-topbar-menu-button-renderer yt-img-shadow {
   display: inherit!important;
 }
-.yvh-enabled ytd-watch .ytp-chrome-bottom {
+.${className} ytd-watch .ytp-chrome-bottom {
   opacity: 1!important;
 }
 `
@@ -35,7 +37,7 @@ const sendMessage = (tabId) => {
   chrome.tabs.sendMessage(tabId, { id: 'stateChanged', data: { enabled: enabled[tabId] } })
 }
 
-chrome.pageAction.onClicked.addListener(async (tab) => {
+chrome.pageAction.onClicked.addListener((tab) => {
   Logger.log('chrome.pageAction.onClicked', tab)
 
   enabled[tab.id] = !enabled[tab.id]
@@ -43,7 +45,7 @@ chrome.pageAction.onClicked.addListener(async (tab) => {
   sendMessage(tab.id)
 })
 
-chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   Logger.log('chrome.runtime.onMessage', message, sender, sendResponse)
 
   const { id } = message
@@ -55,12 +57,9 @@ chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
       setIcon(tab.id)
       sendMessage(tab.id)
       break
-    case 'contentUnloaded':
-      chrome.pageAction.hide(tab.id)
-      break
   }
 })
 
-;(async () => {
+;(() => {
   Logger.log('background script loaded')
 })()
