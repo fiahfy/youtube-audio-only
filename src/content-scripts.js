@@ -1,10 +1,12 @@
 import Logger from './utils/logger'
 
+const className = 'yao-enabled'
+
 const update = (enabled) => {
   if (enabled) {
-    document.body.classList.add('yao-enabled')
+    document.body.classList.add(className)
   } else {
-    document.body.classList.remove('yao-enabled')
+    document.body.classList.remove(className)
   }
 }
 

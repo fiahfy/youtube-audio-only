@@ -5,21 +5,23 @@ import './assets/icon16.png'
 import './assets/icon48.png'
 import './assets/icon128.png'
 
+const className = 'yao-enabled'
+
 const code = `
-.yao-enabled ytd-thumbnail,
-.yao-enabled yt-img-shadow,
-.yao-enabled ytd-playlist-panel-video-renderer #thumbnail-container,
-.yao-enabled ytd-watch video.video-stream.html5-main-video,
-.yao-enabled ytd-watch .ytp-offline-slate,
-.yao-enabled ytd-watch .ytp-spinner,
-.yao-enabled ytd-channel-video-player-renderer #player-container,
-.yao-enabled app-header .banner-visible-area {
+.${className} ytd-thumbnail,
+.${className} yt-img-shadow,
+.${className} ytd-playlist-panel-video-renderer #thumbnail-container,
+.${className} ytd-watch video.video-stream.html5-main-video,
+.${className} ytd-watch .ytp-offline-slate,
+.${className} ytd-watch .ytp-spinner,
+.${className} ytd-channel-video-player-renderer #player-container,
+.${className} app-header .banner-visible-area {
   display: none!important;
 }
-.yao-enabled ytd-topbar-menu-button-renderer yt-img-shadow {
+.${className} ytd-topbar-menu-button-renderer yt-img-shadow {
   display: inherit!important;
 }
-.yao-enabled ytd-watch .ytp-chrome-bottom {
+.${className} ytd-watch .ytp-chrome-bottom {
   opacity: 1!important;
 }
 `
