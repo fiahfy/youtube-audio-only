@@ -35,7 +35,7 @@ const sendMessage = (tabId) => {
   chrome.tabs.sendMessage(tabId, { id: 'stateChanged', data: { enabled: enabled[tabId] } })
 }
 
-chrome.pageAction.onClicked.addListener(async (tab) => {
+chrome.pageAction.onClicked.addListener((tab) => {
   Logger.log('chrome.pageAction.onClicked', tab)
 
   enabled[tab.id] = !enabled[tab.id]
@@ -43,7 +43,7 @@ chrome.pageAction.onClicked.addListener(async (tab) => {
   sendMessage(tab.id)
 })
 
-chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   Logger.log('chrome.runtime.onMessage', message, sender, sendResponse)
 
   const { id } = message
@@ -61,6 +61,6 @@ chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
   }
 })
 
-;(async () => {
+;(() => {
   Logger.log('background script loaded')
 })()

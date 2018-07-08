@@ -1,6 +1,6 @@
 import Logger from './utils/logger'
 
-const update = async (enabled) => {
+const update = (enabled) => {
   if (enabled) {
     document.body.classList.add('yao-enabled')
   } else {
@@ -8,18 +8,18 @@ const update = async (enabled) => {
   }
 }
 
-chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   Logger.log('onMessage', message, sender, sendResponse)
 
   const { id, data: { enabled } } = message
   switch (id) {
     case 'stateChanged':
-      await update(enabled)
+      update(enabled)
       break
   }
 })
 
-;(async () => {
+;(() => {
   Logger.log('content script loaded')
 
   chrome.runtime.sendMessage({ id: 'contentLoaded' })
