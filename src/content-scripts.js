@@ -2,9 +2,9 @@ import Logger from './utils/logger'
 
 const update = async (enabled) => {
   if (enabled) {
-    document.body.classList.add('yvh-enabled')
+    document.body.classList.add('yao-enabled')
   } else {
-    document.body.classList.remove('yvh-enabled')
+    document.body.classList.remove('yao-enabled')
   }
 }
 

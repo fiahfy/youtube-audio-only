@@ -6,20 +6,20 @@ import './assets/icon48.png'
 import './assets/icon128.png'
 
 const code = `
-.yvh-enabled ytd-thumbnail,
-.yvh-enabled yt-img-shadow,
-.yvh-enabled ytd-playlist-panel-video-renderer #thumbnail-container,
-.yvh-enabled ytd-watch video.video-stream.html5-main-video,
-.yvh-enabled ytd-watch .ytp-offline-slate,
-.yvh-enabled ytd-watch .ytp-spinner,
-.yvh-enabled ytd-channel-video-player-renderer #player-container,
-.yvh-enabled app-header .banner-visible-area {
+.yao-enabled ytd-thumbnail,
+.yao-enabled yt-img-shadow,
+.yao-enabled ytd-playlist-panel-video-renderer #thumbnail-container,
+.yao-enabled ytd-watch video.video-stream.html5-main-video,
+.yao-enabled ytd-watch .ytp-offline-slate,
+.yao-enabled ytd-watch .ytp-spinner,
+.yao-enabled ytd-channel-video-player-renderer #player-container,
+.yao-enabled app-header .banner-visible-area {
   display: none!important;
 }
-.yvh-enabled ytd-topbar-menu-button-renderer yt-img-shadow {
+.yao-enabled ytd-topbar-menu-button-renderer yt-img-shadow {
   display: inherit!important;
 }
-.yvh-enabled ytd-watch .ytp-chrome-bottom {
+.yao-enabled ytd-watch .ytp-chrome-bottom {
   opacity: 1!important;
 }
 `
