@@ -57,9 +57,6 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       setIcon(tab.id)
       sendMessage(tab.id)
       break
-    case 'contentUnloaded':
-      chrome.pageAction.hide(tab.id)
-      break
   }
 })
 
