@@ -15,8 +15,8 @@ const code = `
 .${className} ytd-watch .ytp-spinner,
 .${className} ytd-watch .ytp-storyboard-framepreview,
 .${className} ytd-watch .ytp-offline-slate,
-.${className} ytd-watch .ytp-upnext .ytp-cued-thumbnail-overlay-image,
-.${className} ytd-watch .ytp-player-content .ytp-videowall-still-image,
+.${className} ytd-watch .ytp-cued-thumbnail-overlay-image,
+.${className} ytd-watch .ytp-videowall-still-image,
 .${className} ytd-channel-video-player-renderer #player-container,
 .${className} app-header .banner-visible-area {
   display: none!important;
