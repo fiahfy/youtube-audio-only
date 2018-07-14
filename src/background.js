@@ -8,24 +8,19 @@ import './assets/icon128.png'
 const className = 'yao-enabled'
 
 const code = `
-.${className} ytd-thumbnail,
-.${className} yt-img-shadow,
-.${className} ytd-playlist-panel-video-renderer #thumbnail-container,
-.${className} ytd-watch video.video-stream.html5-main-video,
-.${className} ytd-watch .ytp-spinner,
-.${className} ytd-watch .ytp-storyboard-framepreview,
-.${className} ytd-watch .ytp-offline-slate,
-.${className} ytd-watch .ytp-cued-thumbnail-overlay-image,
-.${className} ytd-watch .ytp-videowall-still-image,
-.${className} ytd-channel-video-player-renderer #player-container,
-.${className} app-header .banner-visible-area {
+.${className} video,
+.${className} img {
   display: none!important;
 }
-.${className} ytd-topbar-menu-button-renderer yt-img-shadow {
-  display: inherit!important;
+.${className} * {
+  background-image: none!important
 }
 .${className} ytd-watch .ytp-chrome-bottom {
   opacity: 1!important;
+}
+.${className} ytd-topbar-menu-button-renderer yt-img-shadow img,
+.${className} #links-holder yt-img-shadow img {
+  display: inherit!important;
 }
 `
 
