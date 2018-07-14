@@ -11,7 +11,7 @@ const update = (enabled) => {
 }
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-  Logger.log('onMessage', message, sender, sendResponse)
+  Logger.log('chrome.runtime.onMessage', message, sender, sendResponse)
 
   const { id, data } = message
   switch (id) {
@@ -24,5 +24,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 ;(() => {
   Logger.log('content script loaded')
 
-  chrome.runtime.sendMessage({ id: 'contentLoaded' })
+  document.addEventListener('DOMContentLoaded', () => {
+    chrome.runtime.sendMessage({ id: 'contentLoaded' })
+  })
 })()
