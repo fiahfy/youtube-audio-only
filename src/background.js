@@ -8,19 +8,19 @@ import './assets/icon128.png'
 const className = 'yao-enabled'
 
 const code = `
+.${className} * {
+  background-image: none!important
+}
 .${className} video,
 .${className} img {
   display: none!important;
 }
-.${className} * {
-  background-image: none!important
-}
-.${className} ytd-watch .ytp-chrome-bottom {
-  opacity: 1!important;
-}
 .${className} ytd-topbar-menu-button-renderer yt-img-shadow img,
 .${className} #links-holder yt-img-shadow img {
   display: inherit!important;
+}
+.${className} ytd-watch .ytp-chrome-bottom {
+  opacity: 1!important;
 }
 `
 
