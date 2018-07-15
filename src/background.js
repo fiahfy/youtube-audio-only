@@ -32,7 +32,7 @@ const setIcon = (tabId) => {
 }
 
 const sendMessage = (tabId) => {
-  chrome.tabs.sendMessage(tabId, { id: 'stateChanged', data: { enabled: enabled[tabId] } })
+  chrome.tabs.sendMessage(tabId, { id: 'enabledChanged', data: { enabled: enabled[tabId] } })
 }
 
 chrome.pageAction.onClicked.addListener((tab) => {

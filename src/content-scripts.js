@@ -15,7 +15,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
   const { id, data } = message
   switch (id) {
-    case 'stateChanged':
+    case 'enabledChanged':
       update(data.enabled)
       break
   }
