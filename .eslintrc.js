@@ -2,6 +2,10 @@
 
 module.exports = {
   root: true,
+  parserOptions: {
+    ecmaVersion: 2018,
+    sourceType: 'module'
+  },
   env: {
     browser: true,
     node: true
@@ -11,7 +15,6 @@ module.exports = {
   },
   extends: [
     'eslint:recommended',
-    'plugin:vue/recommended',
     'plugin:prettier/recommended'
   ]
 }
