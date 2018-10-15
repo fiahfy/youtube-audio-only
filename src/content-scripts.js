@@ -20,7 +20,6 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       break
   }
 })
-
 ;(() => {
   Logger.log('content script loaded')
 

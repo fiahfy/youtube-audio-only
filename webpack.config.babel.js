@@ -37,15 +37,19 @@ export default {
         NODE_ENV: JSON.stringify(mode)
       }
     }),
-    new CopyWebpackPlugin([{
-      from: 'manifest.json',
-      transform: function (content, path) {
-        return Buffer.from(JSON.stringify({
-          ...JSON.parse(content.toString()),
-          version: process.env.npm_package_version
-        }))
+    new CopyWebpackPlugin([
+      {
+        from: 'manifest.json',
+        transform: function(content) {
+          return Buffer.from(
+            JSON.stringify({
+              ...JSON.parse(content.toString()),
+              version: process.env.npm_package_version
+            })
+          )
+        }
       }
-    }])
+    ])
   ],
   resolve: {
     extensions: ['.js', '.json'],
