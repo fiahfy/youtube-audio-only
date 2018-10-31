@@ -20,10 +20,9 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       break
   }
 })
-;(() => {
-  Logger.log('content script loaded')
 
-  document.addEventListener('DOMContentLoaded', () => {
-    chrome.runtime.sendMessage({ id: 'contentLoaded' })
-  })
-})()
+Logger.log('content script loaded')
+
+document.addEventListener('DOMContentLoaded', () => {
+  chrome.runtime.sendMessage({ id: 'contentLoaded' })
+})
