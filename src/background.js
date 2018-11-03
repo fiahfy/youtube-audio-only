@@ -5,50 +5,52 @@ import './assets/icon16.png'
 import './assets/icon48.png'
 import './assets/icon128.png'
 
-const className = 'yao-enabled'
+const id = chrome.runtime.id
+
+const ClassName = {
+  enabled: `${id}-enabled`
+}
 
 const code = `
-.${className} *:not(#animated-yoodle) {
+.${ClassName.enabled} *:not(#animated-yoodle) {
   background-image: none!important
 }
-.${className} video,
-.${className} img {
+.${ClassName.enabled} video,
+.${ClassName.enabled} img {
   display: none!important;
 }
-.${className} ytd-topbar-logo-renderer ytd-yoodle-renderer img,
-.${className} ytd-topbar-menu-button-renderer yt-img-shadow img,
-.${className} #links-holder yt-img-shadow img {
+.${ClassName.enabled} ytd-topbar-logo-renderer ytd-yoodle-renderer img,
+.${ClassName.enabled} ytd-topbar-menu-button-renderer yt-img-shadow img,
+.${ClassName.enabled} #links-holder yt-img-shadow img {
   display: inherit!important;
 }
-.${className} .html5-video-player {
+.${ClassName.enabled} .html5-video-player {
   background-color: #000;
 }
-.${className} .ytp-chrome-bottom {
+.${ClassName.enabled} .ytp-chrome-bottom {
   opacity: 1!important;
 }
 `
 
-const enabled = {}
+let initialDisabled = false
+const disabledTabs = {}
 
 const setIcon = (tabId) => {
-  const path = enabled[tabId] ? iconOn : iconOff
+  const path = disabledTabs[tabId] ? iconOff : iconOn
   chrome.pageAction.setIcon({ tabId, path })
 }
 
-const sendMessage = (tabId) => {
+const contentLoaded = (tabId, frameId) => {
+  chrome.tabs.insertCSS(tabId, { frameId, code })
+  const disabled = initialDisabled
+  disabledTabs[tabId] = disabled
+  setIcon(tabId)
   chrome.tabs.sendMessage(tabId, {
-    id: 'enabledChanged',
-    data: { enabled: enabled[tabId] }
+    id: 'disabledChanged',
+    data: { disabled }
   })
+  chrome.pageAction.show(tabId)
 }
-
-chrome.pageAction.onClicked.addListener((tab) => {
-  Logger.log('chrome.pageAction.onClicked', tab)
-
-  enabled[tab.id] = !enabled[tab.id]
-  setIcon(tab.id)
-  sendMessage(tab.id)
-})
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   Logger.log('chrome.runtime.onMessage', message, sender, sendResponse)
@@ -57,12 +59,22 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   const { tab, frameId } = sender
   switch (id) {
     case 'contentLoaded':
-      chrome.pageAction.show(tab.id)
-      chrome.tabs.insertCSS(tab.id, { frameId, code })
-      setIcon(tab.id)
-      sendMessage(tab.id)
+      contentLoaded(tab.id, frameId)
       break
   }
+})
+
+chrome.pageAction.onClicked.addListener((tab) => {
+  Logger.log('chrome.pageAction.onClicked', tab)
+
+  const disabled = !disabledTabs[tab.id]
+  initialDisabled = disabled
+  disabledTabs[tab.id] = disabled
+  setIcon(tab.id)
+  chrome.tabs.sendMessage(tab.id, {
+    id: 'disabledChanged',
+    data: { disabled }
+  })
 })
 
 Logger.log('background script loaded')
