@@ -1,12 +1,16 @@
 import Logger from './utils/logger'
 
-const className = 'yao-enabled'
+const id = chrome.runtime.id
 
-const update = (enabled) => {
-  if (enabled) {
-    document.body.classList.add(className)
+const ClassName = {
+  enabled: `${id}-enabled`
+}
+
+const update = (disabled) => {
+  if (disabled) {
+    document.body.classList.remove(ClassName.enabled)
   } else {
-    document.body.classList.remove(className)
+    document.body.classList.add(ClassName.enabled)
   }
 }
 
@@ -15,16 +19,14 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
   const { id, data } = message
   switch (id) {
-    case 'enabledChanged':
-      update(data.enabled)
+    case 'disabledChanged':
+      update(data.disabled)
       break
   }
 })
 
-;(() => {
-  Logger.log('content script loaded')
+Logger.log('content script loaded')
 
-  document.addEventListener('DOMContentLoaded', () => {
-    chrome.runtime.sendMessage({ id: 'contentLoaded' })
-  })
-})()
+document.addEventListener('DOMContentLoaded', () => {
+  chrome.runtime.sendMessage({ id: 'contentLoaded' })
+})
