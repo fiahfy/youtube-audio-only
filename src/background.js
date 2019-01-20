@@ -1,4 +1,4 @@
-import Logger from './utils/logger'
+import logger from './utils/logger'
 import iconOff from './assets/icon-off48.png'
 import iconOn from './assets/icon-on48.png'
 import './assets/icon16.png'
@@ -53,7 +53,7 @@ const contentLoaded = (tabId, frameId) => {
 }
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-  Logger.log('chrome.runtime.onMessage', message, sender, sendResponse)
+  logger.log('chrome.runtime.onMessage', message, sender, sendResponse)
 
   const { id } = message
   const { tab, frameId } = sender
@@ -65,7 +65,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 })
 
 chrome.pageAction.onClicked.addListener((tab) => {
-  Logger.log('chrome.pageAction.onClicked', tab)
+  logger.log('chrome.pageAction.onClicked', tab)
 
   const disabled = !disabledTabs[tab.id]
   initialDisabled = disabled
@@ -77,4 +77,4 @@ chrome.pageAction.onClicked.addListener((tab) => {
   })
 })
 
-Logger.log('background script loaded')
+logger.log('background script loaded')

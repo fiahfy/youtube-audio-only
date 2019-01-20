@@ -1,5 +1,5 @@
 # YouTube Audio Only
-[![Build Status](https://travis-ci.org/fiahfy/youtube-audio-only.svg?branch=master)](https://travis-ci.org/fiahfy/youtube-audio-only)
+[![Build Status](https://travis-ci.com/fiahfy/youtube-audio-only.svg?branch=master)](https://travis-ci.com/fiahfy/youtube-audio-only)
 
 > Chrome Extension for Audio Only on YouTube.
 
@@ -15,7 +15,7 @@
 
 
 ## Installation
-1. Download `.zip` file from [releases page](https://github.com/fiahfy/youtube-audio-only/releases).
+1. Download `archive.zip` file from [releases page](https://github.com/fiahfy/youtube-audio-only/releases).
 2. Unzip this file.
 3. Open URL `chrome://extensions/` by Google Chrome.
 4. Enable developer mode.
