@@ -13,7 +13,7 @@ const ClassName = {
 
 const code = `
 .${ClassName.enabled} *:not(#animated-yoodle) {
-  background-image: none!important
+  background-image: none!important;
 }
 .${ClassName.enabled} video,
 .${ClassName.enabled} img {
