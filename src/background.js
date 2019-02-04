@@ -1,33 +1,28 @@
 import logger from './utils/logger'
+import className from './utils/class-name'
 import iconOff from './assets/icon-off48.png'
 import iconOn from './assets/icon-on48.png'
 import './assets/icon16.png'
 import './assets/icon48.png'
 import './assets/icon128.png'
 
-const id = chrome.runtime.id
-
-const ClassName = {
-  enabled: `${id}-enabled`
-}
-
 const code = `
-.${ClassName.enabled} *:not(#animated-yoodle) {
+.${className.enabled} *:not(#animated-yoodle) {
   background-image: none!important;
 }
-.${ClassName.enabled} video,
-.${ClassName.enabled} img {
+.${className.enabled} video,
+.${className.enabled} img {
   display: none!important;
 }
-.${ClassName.enabled} ytd-topbar-logo-renderer ytd-yoodle-renderer img,
-.${ClassName.enabled} ytd-topbar-menu-button-renderer yt-img-shadow img,
-.${ClassName.enabled} #links-holder yt-img-shadow img {
+.${className.enabled} ytd-topbar-logo-renderer ytd-yoodle-renderer img,
+.${className.enabled} ytd-topbar-menu-button-renderer yt-img-shadow img,
+.${className.enabled} #links-holder yt-img-shadow img {
   display: inherit!important;
 }
-.${ClassName.enabled} .html5-video-player {
+.${className.enabled} .html5-video-player {
   background-color: #000;
 }
-.${ClassName.enabled} .ytp-chrome-bottom {
+.${className.enabled} .ytp-chrome-bottom {
   opacity: 1!important;
 }
 `
@@ -41,15 +36,16 @@ const setIcon = (tabId) => {
 }
 
 const contentLoaded = (tabId, frameId) => {
-  chrome.tabs.insertCSS(tabId, { frameId, code })
   const disabled = initialDisabled
   disabledTabs[tabId] = disabled
+
   setIcon(tabId)
+  chrome.pageAction.show(tabId)
+  chrome.tabs.insertCSS(tabId, { frameId, code })
   chrome.tabs.sendMessage(tabId, {
     id: 'disabledChanged',
     data: { disabled }
   })
-  chrome.pageAction.show(tabId)
 }
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
@@ -70,6 +66,7 @@ chrome.pageAction.onClicked.addListener((tab) => {
   const disabled = !disabledTabs[tab.id]
   initialDisabled = disabled
   disabledTabs[tab.id] = disabled
+
   setIcon(tab.id)
   chrome.tabs.sendMessage(tab.id, {
     id: 'disabledChanged',
