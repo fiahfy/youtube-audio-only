@@ -1,5 +1,5 @@
 import logger from './utils/logger'
-import className from './utils/class-name'
+import className from './constants/class-name'
 
 const updateBody = (disabled) => {
   if (disabled) {

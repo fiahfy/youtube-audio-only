@@ -1,5 +1,5 @@
 import logger from './utils/logger'
-import className from './utils/class-name'
+import className from './constants/class-name'
 import iconOff from './assets/icon-off48.png'
 import iconOn from './assets/icon-on48.png'
 import './assets/icon16.png'
