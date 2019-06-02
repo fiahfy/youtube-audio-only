@@ -1,32 +1,33 @@
-import Logger from './utils/logger'
+import browser from 'webextension-polyfill'
+import className from './constants/class-name'
+import stylesheet from './constants/stylesheet'
 
-const id = chrome.runtime.id
-
-const ClassName = {
-  enabled: `${id}-enabled`
-}
-
-const update = (disabled) => {
-  if (disabled) {
-    document.body.classList.remove(ClassName.enabled)
+const updateDocument = (enabled) => {
+  if (enabled) {
+    document.documentElement.classList.add(className.enabled)
   } else {
-    document.body.classList.add(ClassName.enabled)
+    document.documentElement.classList.remove(className.enabled)
   }
 }
 
-chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-  Logger.log('chrome.runtime.onMessage', message, sender, sendResponse)
-
-  const { id, data } = message
+browser.runtime.onMessage.addListener((message) => {
+  const { id, type, data } = message
+  if (type === 'SIGN_RELOAD' && process.env.NODE_ENV !== 'production') {
+    // reload if files changed
+    parent.location.reload()
+    return
+  }
   switch (id) {
-    case 'disabledChanged':
-      update(data.disabled)
+    case 'enabledChanged':
+      updateDocument(data.enabled)
       break
   }
 })
 
-Logger.log('content script loaded')
+const style = document.createElement('style')
+style.textContent = stylesheet
+document.documentElement.append(style)
 
-document.addEventListener('DOMContentLoaded', () => {
-  chrome.runtime.sendMessage({ id: 'contentLoaded' })
+browser.runtime.sendMessage({ id: 'documentStarted' }).then((data) => {
+  updateDocument(data.enabled)
 })

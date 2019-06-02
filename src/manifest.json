@@ -1,11 +1,7 @@
 {
-  "name": "YouTube Audio Only",
-  "description": " Hide Contents for Audio Only on YouTube",
   "manifest_version": 2,
   "icons": {
-    "16": "assets/icon16.png",
-    "48": "assets/icon48.png",
-    "128": "assets/icon128.png"
+    "128": "assets/icon.png"
   },
   "background": {
     "scripts": ["background.js"]
@@ -19,7 +15,7 @@
     }
   ],
   "page_action": {
-    "default_icon": "assets/icon48.png"
+    "default_icon": "assets/icon.png"
   },
   "permissions": [
     "tabs",
