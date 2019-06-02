@@ -23,7 +23,7 @@ export default {
         exclude: /node_modules/
       },
       {
-        test: /\.(jpg|gif|png|svg)$/,
+        test: /\.(jpg|gif|png)$/,
         loader: 'file-loader',
         options: {
           name: 'assets/[name].[ext]'
@@ -44,6 +44,8 @@ export default {
           return Buffer.from(
             JSON.stringify({
               ...JSON.parse(content.toString()),
+              name: process.env.npm_package_productName,
+              description: process.env.npm_package_description,
               version: process.env.npm_package_version
             })
           )
