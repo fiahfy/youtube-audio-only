@@ -1,7 +1,7 @@
 {
   "name": "youtube-audio-only",
   "description": "Hide Contents for Audio Only on YouTube",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "author": {
     "name": "fiahfy",
     "email": "d.fiahfy@gmail.com",
@@ -22,7 +22,7 @@
     "eslint-config-prettier": "^6.0.0",
     "eslint-plugin-prettier": "^3.0.0",
     "file-loader": "^4.0.0",
-    "husky": "^2.3.0",
+    "husky": "^3.0.1",
     "prettier": "^1.14.3",
     "webpack": "^4.0.1",
     "webpack-chrome-extension-reloader": "^1.1.1",
