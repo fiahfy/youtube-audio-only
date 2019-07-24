@@ -11,12 +11,7 @@ const updateDocument = (enabled) => {
 }
 
 browser.runtime.onMessage.addListener((message) => {
-  const { id, type, data } = message
-  if (type === 'SIGN_RELOAD' && process.env.NODE_ENV !== 'production') {
-    // reload if files changed
-    parent.location.reload()
-    return
-  }
+  const { id, data } = message
   switch (id) {
     case 'enabledChanged':
       updateDocument(data.enabled)
