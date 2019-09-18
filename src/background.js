@@ -2,7 +2,7 @@ import browser from 'webextension-polyfill'
 import icon from './assets/icon.png'
 import iconOn from './assets/icon-on.png'
 
-let initialEnabled = true
+let initialEnabled = false
 const enabledTabs = {}
 
 const setIcon = async (tabId) => {
