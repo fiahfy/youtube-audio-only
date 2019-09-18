@@ -1,7 +1,7 @@
 {
   "name": "youtube-audio-only",
   "description": "Hide Contents for Audio Only on YouTube",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "author": {
     "name": "fiahfy",
     "email": "d.fiahfy@gmail.com",
@@ -11,22 +11,22 @@
     "webextension-polyfill": "^0.4.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0",
-    "@babel/plugin-transform-runtime": "^7.0.0",
-    "@babel/preset-env": "^7.0.0",
-    "@babel/register": "^7.0.0",
-    "@babel/runtime": "^7.0.0",
-    "babel-loader": "^8.0.2",
-    "copy-webpack-plugin": "^5.0.3",
-    "eslint": "^6.0.1",
-    "eslint-config-prettier": "^6.0.0",
-    "eslint-plugin-prettier": "^3.0.0",
-    "file-loader": "^4.0.0",
-    "husky": "^3.0.1",
-    "prettier": "^1.14.3",
-    "webpack": "^4.0.1",
-    "webpack-cli": "^3.0.2",
-    "webpack-extension-reloader": "^1.1.0"
+    "@babel/core": "^7.6.0",
+    "@babel/plugin-transform-runtime": "^7.6.0",
+    "@babel/preset-env": "^7.6.0",
+    "@babel/register": "^7.6.0",
+    "@babel/runtime": "^7.6.0",
+    "babel-loader": "^8.0.6",
+    "copy-webpack-plugin": "^5.0.4",
+    "eslint": "^6.4.0",
+    "eslint-config-prettier": "^6.3.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "file-loader": "^4.2.0",
+    "husky": "^3.0.5",
+    "prettier": "^1.18.2",
+    "webpack": "^4.40.2",
+    "webpack-cli": "^3.3.9",
+    "webpack-extension-reloader": "^1.1.1"
   },
   "keywords": [
     "chrome extension",
