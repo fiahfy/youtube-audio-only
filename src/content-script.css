@@ -1,0 +1,20 @@
+/** biome-ignore-all lint/complexity/noImportantStyles: false positive */
+
+.yao-enabled *:not(#animated-yoodle) {
+  background-image: none !important;
+}
+
+.yao-enabled video,
+.yao-enabled img {
+  display: none !important;
+}
+
+.yao-enabled ytd-topbar-logo-renderer ytd-yoodle-renderer img,
+.yao-enabled ytd-topbar-menu-button-renderer yt-img-shadow img,
+.yao-enabled #links-holder yt-img-shadow img {
+  display: inherit !important;
+}
+
+.yao-enabled .html5-video-player {
+  background-color: #000;
+}

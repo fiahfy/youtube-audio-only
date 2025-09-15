@@ -2,48 +2,28 @@
   "name": "youtube-audio-only",
   "description": "Hide Contents for Audio Only on YouTube",
   "version": "0.0.10",
-  "author": {
-    "name": "fiahfy",
-    "email": "d.fiahfy@gmail.com",
-    "url": "https://fiahfy.github.io/"
-  },
-  "dependencies": {
-    "webextension-polyfill": "^0.4.0"
-  },
   "devDependencies": {
-    "@babel/core": "^7.6.0",
-    "@babel/plugin-transform-runtime": "^7.6.0",
-    "@babel/preset-env": "^7.6.0",
-    "@babel/register": "^7.6.0",
-    "@babel/runtime": "^7.6.0",
-    "babel-loader": "^8.0.6",
-    "copy-webpack-plugin": "^5.0.4",
-    "eslint": "^6.4.0",
-    "eslint-config-prettier": "^6.3.0",
-    "eslint-plugin-prettier": "^3.1.1",
-    "file-loader": "^4.2.0",
-    "husky": "^3.0.5",
-    "prettier": "^1.18.2",
-    "webpack": "^4.40.2",
-    "webpack-cli": "^3.3.9",
-    "webpack-extension-reloader": "^1.1.1"
+    "@biomejs/biome": "^2.2.4",
+    "@crxjs/vite-plugin": "^2.2.0",
+    "@fiahfy/biome-config": "^0.0.2",
+    "@tsconfig/vite-react": "^7.0.1",
+    "@types/chrome": "^0.1.11",
+    "husky": "^9.1.7",
+    "typescript": "^5.9.2",
+    "vite": "^7.1.5",
+    "vite-plugin-zip-pack": "^1.2.4",
+    "vite-tsconfig-paths": "^5.1.4"
   },
-  "keywords": [
-    "chrome extension",
-    "webpack",
-    "youtube"
-  ],
+  "packageManager": "yarn@4.9.4",
   "private": true,
-  "productName": "YouTube Audio Only",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/fiahfy/youtube-audio-only"
-  },
+  "productName": "Audio Only for YouTube",
   "scripts": {
-    "build": "webpack",
-    "dev": "webpack -w --config webpack.config.dev.babel.js",
-    "lint": "eslint -f codeframe --ignore-path .gitignore .",
-    "package": "NODE_ENV=production npm run build && mkdir -p dist && zip -r dist/archive.zip app",
-    "test": "npm run lint"
-  }
+    "build": "tsc && vite build",
+    "dev": "vite",
+    "lint": "biome check",
+    "prepare": "husky",
+    "test": "yarn lint && yarn type-check",
+    "type-check": "tsc"
+  },
+  "type": "module"
 }
